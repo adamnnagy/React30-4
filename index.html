@@ -3,34 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <title>30/4</title>
-  
-  
-  <link rel='stylesheet prefetch' href='https://gist.githubusercontent.com/auser/2bc34b9abf07f34f602dccd6ca855df1/raw/070d6cd5b4d4ec1a3e6892d43e877039a91a9108/timeline.css'>
-<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/fontawesome/4.7.0/css/font-awesome.min.css'>
 
-  
-  
+
+
+    <link rel="stylesheet" type="text/css" href="timeline.css">
+    <link href="https://maxcdn.bootstrapcdn.com/fontawesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+
+    <script src='https://codepen.io/chriscoyier/pen/yIgqi.js'></script>
+    <script src='https://fb.me/JSXTransformer-0.12.0.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js'></script>
+
+
+
+
 </head>
 
-<body>
   <html>
 
-<head>
-
-</head>
 
 <body>
+  <h1>hello</h1>
   <div id="app"></div>
 
-</body>
+ <script type="text/babel">
+ class App extends React.Component {
+   render() {
+      return (
+        <div className="notificationsFrame">
+          <div className="panel">
+            <Header />
+            <Content />
+          </div>
+        </div>
+      )
+    }
+  }
 
-</html>
-  <script src='https://codepen.io/chriscoyier/pen/yIgqi.js'></script>
-<script src='https://fb.me/JSXTransformer-0.12.0.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js'></script>
+class Header extends React.Component {
+  render() {
+    return (
+      <div className="header">
+        <div className="fa fa-more"></div>
 
-    <script  src="js/index.js"></script>
+        <span className="title">Timeline</span>
+
+        <input
+          type="text"
+          className="searchInput"
+          placeholder="Search ..." />
+
+          <div className="fa fa-search searchIcon"></div>
+
+
+
+      </div>
+    )
+  }
+}
+
+class Content extends React.Component {
+  render() {
+    return (
+      <div className="content">
+        <div className="line"></div>
+
+        {/* Timeline item */}
+        <div className="item">
+          <div className="avatar">
+            <img
+            alt='Doug'
+            src="http://www.croop.cl/UI/twitter/images/doug.jpg" />
+            Doug
+          </div>
+
+          <span className="time">
+            An hour ago
+          </span>
+          <p>
+          Ate Lunch
+          </p>
+          <div className="commentCount">
+            2
+          </div>
+        </div>
+
+          {/* ... */}
+
+      </div>
+    )
+  }
+}
+
+
+var mount = document.querySelector('#app');
+ReactDOM.render(<App />, mount);
+ </script>
 
 </body>
 </html>
