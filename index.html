@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <title>30/4</title>
 
+    <link href="timeline.css" rel="stylesheet" type="text/css" />
 
 
-    <link rel="stylesheet" type="text/css" href="timeline.css">
-    <link href="https://maxcdn.bootstrapcdn.com/fontawesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
 
 
     <script src='https://codepen.io/chriscoyier/pen/yIgqi.js'></script>
@@ -28,13 +28,19 @@
   <div id="app"></div>
 
  <script type="text/babel">
+
+const activity = this.props.activity;
+
  class App extends React.Component {
    render() {
       return (
         <div className="notificationsFrame">
           <div className="panel">
-            <Header />
-            <Content />
+            <Header title="Timeline"/>
+            <Header title="Profile"/>
+            <Header title="Settings"/>
+            <Header title="Chat"/>
+            <Content activity={activities}/>
           </div>
         </div>
       )
@@ -45,9 +51,15 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
-        <div className="fa fa-more"></div>
+        <div className="menuIcon">
+          <div className="dashTop"></div>
+          <div className="dashBottom"></div>
+          <div className="circle"></div>
+        </div>
 
-        <span className="title">Timeline</span>
+        <span className="title">
+          {this.props.title}
+        </span>
 
         <input
           type="text"
@@ -65,30 +77,35 @@ class Header extends React.Component {
 
 class Content extends React.Component {
   render() {
+    const {activities} = this.props;
+
     return (
       <div className="content">
         <div className="line"></div>
 
         {/* Timeline item */}
-        <div className="item">
-          <div className="avatar">
-            <img
-            alt='Doug'
-            src="http://www.croop.cl/UI/twitter/images/doug.jpg" />
-            Doug
+        {activities.map((activity) => (
+          return (
+            <div className="item">
+              <div className="avatar">
+                <img
+                alt={activity.text}
+                src={activity.user.avatar} />
+                {activity.user.name}
+              </div>
+
+              <span className="time">
+                {activity.timestamp}
+              </span>
+              <p>{activity.text}</p>
+              <div className="commentCount">
+                {activity.comments.length}
+              </div>
           </div>
 
-          <span className="time">
-            An hour ago
-          </span>
-          <p>
-          Ate Lunch
-          </p>
-          <div className="commentCount">
-            2
-          </div>
-        </div>
 
+      );
+    })}
           {/* ... */}
 
       </div>
@@ -96,10 +113,17 @@ class Content extends React.Component {
   }
 }
 
+class ActivityItem extends React.Component;
+  render() {
+
+  }
+
+
 
 var mount = document.querySelector('#app');
 ReactDOM.render(<App />, mount);
  </script>
 
 </body>
+
 </html>
